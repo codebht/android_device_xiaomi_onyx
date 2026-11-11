@@ -10,24 +10,15 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-# codebht
-
-# Lunch banner maintainer variable
-RISING_MAINTAINER := codebht
-
-# Chipset/Maintainer properties (ro.rising.chipset/ro.rising.maintainer)
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    RisingChipset="Snapdragon 8s Gen 4" \
-    RisingMaintainer="codebht"
-
-# Enable blur support (recommended for Snapdragon 8s Gen 4)
+# Mist OS Maintainer & Features
+MISTOS_MAINTAINER := codebht
 TARGET_ENABLE_BLUR := true
+TARGET_SUPPORTS_QUICK_TAP := true
+BYPASS_CHARGE_SUPPORTED := true
 
-# Ship default Aperture camera (set to true only if using MIUI/Leica camera port)
-PRODUCT_NO_CAMERA := true
-
-# Build with GMS (Google Apps)
+# GMS / GApps Configuration
 WITH_GMS := true
+TARGET_USES_MINI_GAPPS := false
 
 # Inherit from onyx device
 $(call inherit-product, device/xiaomi/onyx/device.mk)
